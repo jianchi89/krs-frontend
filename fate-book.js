@@ -8,6 +8,9 @@
   const MARKER = '[[KRS_OPENING]]';
   const SLOT = '__KRS_FATE_BOOK__';
 
+  /* 魔物娘开局候选（来自头像包） */
+  const MONSTER_LIST = [{"name":"鮟鱇鱼娘","url":"https://origin.picgo.net/2026/10/28/44f2e1643741ecd0da82c23b6fd301fbaaa0d20c1ef92a18.png"},{"name":"霸王花娘","url":"https://origin.picgo.net/2026/10/28/b489acf2fde4a0c566c4952dcf63ccbce2db3461ac1a81b2.png"},{"name":"白熊娘","url":"https://origin.picgo.net/2026/10/28/d06e867bdcd8bd74a027d6bb10a87235147698be72320237.png"},{"name":"宝箱娘","url":"https://origin.picgo.net/2026/10/28/149e8e30cddb31f23fdecff3e5ce9c302c4b72d16effc6d5.png"},{"name":"贝娘","url":"https://origin.picgo.net/2026/10/28/19573c5253e693a1395b6a557aa010e542f964650124fba6.png"},{"name":"贝希摩斯娘","url":"https://origin.picgo.net/2026/10/28/227dbe3c05c8c146bc895d5ac72e6bf619d4ceb9cc86feaa.png"},{"name":"不死鸟娘(phoenixb)","url":"https://origin.picgo.net/2026/10/28/phoenixb12003dc9be75b012.png"},{"name":"不死鸟娘","url":"https://origin.picgo.net/2026/10/28/6c03c6e2960bd2dafd431cf4af795959dce5cc46f5ec1e63.png"},{"name":"蚕娘","url":"https://origin.picgo.net/2026/10/28/bfb0d6ce2862295bedb2dfa81de96707954ee76a1b07c8c9.png"},{"name":"达贡娘","url":"https://origin.picgo.net/2026/10/28/dc597846d86ac575f3815bda6b3512790479a8da70b35906.png"},{"name":"冬贝利娘","url":"https://origin.picgo.net/2026/10/28/9affa1a56bdd912f92f26792f9cf7c274af0de9126085686.png"},{"name":"独角鲸娘","url":"https://origin.picgo.net/2026/10/28/c3cb2272aa1b374e02d06ca0807b9f273cdc2400f3d031cf.png"},{"name":"蛾娘","url":"https://origin.picgo.net/2026/10/28/9d3de488dd2d4a3ce893ce6044b5d8a9632258326d18495f.png"},{"name":"鳄鱼娘","url":"https://origin.picgo.net/2026/10/28/8d9ebd301d1568a0d7d74bf73aa409c6f42fc952b9b2a1f4.png"},{"name":"二口娘","url":"https://origin.picgo.net/2026/10/28/f80a0efb590efc977f83b719fc0d235f8114e0d320194a7a.png"},{"name":"飞机杯娘","url":"https://origin.picgo.net/2026/10/28/43558e4db7606899a4ffcaa8197d940fdab18d7f13bae403.png"},{"name":"废品人偶娘","url":"https://origin.picgo.net/2026/10/28/25c4f7615b44363bc43ec997febb565d6f4c75f4b59b068f.png"},{"name":"凤蝶娘","url":"https://origin.picgo.net/2026/10/28/6c7c4126ebd870f384689e03621f126f5d37b8e830a093bb.png"},{"name":"蝠鲼娘","url":"https://origin.picgo.net/2026/10/28/ef3ab8dbe1c48a1dadda945156297d9d4b43f330d74d9c6c.png"},{"name":"高阶蛞蝓娘","url":"https://origin.picgo.net/2026/10/28/a8316ba69729986cd437e5f89dadff0d96f8474774c4586c.png"},{"name":"哥布林娘","url":"https://origin.picgo.net/2026/10/28/7da4053e2bdba9264792d0df2380df251610ac5c4048d158.png"},{"name":"果冻娘","url":"https://origin.picgo.net/2026/10/28/1ce8e65b3e8d6a3e3a2ad1a01a89bfcc488fbf53979370c6.png"},{"name":"海参娘","url":"https://origin.picgo.net/2026/10/28/f96ce747a62a795b547eb458ba8b4b4303fe19f2939f9419.png"},{"name":"海葵娘","url":"https://origin.picgo.net/2026/10/28/d6e7f4c8e4a97ffcd9985ca209017c5d3b7bfb7fe7800f44.png"},{"name":"海鳝娘","url":"https://origin.picgo.net/2026/10/28/3bdc7f5dca18d9175ffbb8000b92c684609af71b974af25b.png"},{"name":"海市蜃楼娘","url":"https://origin.picgo.net/2026/10/28/93b671912fd7ee3fc928288adde8c98fd2c56a41f193b7df.png"},{"name":"海星娘","url":"https://origin.picgo.net/2026/10/28/afcd4a239528a294cf33f39bcffa038941aab69aaf833172.png"},{"name":"胡蜂娘","url":"https://origin.picgo.net/2026/10/28/6fba0dafb2e10603c9f93726b88c7a407f7e6297a0db4304.png"},{"name":"虎娘","url":"https://origin.picgo.net/2026/10/28/bb242ddac07413c1df0cef45c5add9916db17a7ca4490d7d.png"},{"name":"画像娘","url":"https://origin.picgo.net/2026/10/28/173a36f99b454ae5cd0706d25356308c81d10bf6a275c921.png"},{"name":"灰熊娘","url":"https://origin.picgo.net/2026/10/28/b0c9e21e8a78c9bf733b89dbf9dd9599443aa0afe5ae4a77.png"},{"name":"鸡蛇娘","url":"https://origin.picgo.net/2026/10/28/97663b1e7485b4a77c352337cffcf53628a8849fe30b1313.png"},{"name":"僵尸龙娘","url":"https://origin.picgo.net/2026/10/28/acbd0bef472527ea9c2a09a5230939413f05513fdfab3cb4.png"},{"name":"巨龙娘","url":"https://origin.picgo.net/2026/10/28/27a3937bdc7d00e47a2f0af21c5a4ba528b6ee6f24de6ba8.png"},{"name":"巨人娘","url":"https://origin.picgo.net/2026/10/28/fed05c34d0da6daba27b3b49ca1d9b73c5f3ad72a99c4c87.png"},{"name":"剧毒史莱姆娘","url":"https://origin.picgo.net/2026/10/28/6f79cf8764861e06c057f700fa9518496b3568053716b714.png"},{"name":"攫速者娘","url":"https://origin.picgo.net/2026/10/28/771df7f5cf5bbd621eb297d831e830b75eec25aeb83b8ad3.png"},{"name":"卡班克尔娘","url":"https://origin.picgo.net/2026/10/28/823e5c6d5fae7d4511a96dd763203e8fe2058c2b794ce069.png"},{"name":"昆虫娘们","url":"https://origin.picgo.net/2026/10/28/ac23439aaaa06913ba4cb6d19ece598cd0eb94cd93c6f0c0.png"},{"name":"蛞蝓娘","url":"https://origin.picgo.net/2026/10/28/4056ea62df98291fbfb1e0b13787900fb063c246bd34c112.png"},{"name":"蜡烛娘","url":"https://origin.picgo.net/2026/10/28/e951dc82909cd2280afbc86c4ae3c41e2407a7b2ec678c46.png"},{"name":"兰花螳螂娘","url":"https://origin.picgo.net/2026/10/28/b3702fbc22d26cdba63bcd00025950efa428641cec854f43.png"},{"name":"狼娘","url":"https://origin.picgo.net/2026/10/28/e4a4e63aaad607b3f5f35225af54a3821dbce9891e86047b.png"},{"name":"利维坦娘","url":"https://origin.picgo.net/2026/10/28/e6697f9fec4c2bc5716a4ad031dbb70a36226f493c19224c.png"},{"name":"龙娘","url":"https://origin.picgo.net/2026/10/28/ee266da4b3714e8894b5636503efe0f98bae5bd5c61e4bc1.png"},{"name":"龙鸟娘","url":"https://origin.picgo.net/2026/10/28/34dc5fdfc40f1006ffb435b4f20f628d84aa98ed26360d13.png"},{"name":"麻雀娘","url":"https://origin.picgo.net/2026/10/28/c38e093adf99c4b34e4c7327040d778566876383b3a64cda.png"},{"name":"马可西亚斯娘","url":"https://origin.picgo.net/2026/10/28/a2872d4bc680e6005a1f0b91ea413e2394c3c4d85f82e113.png"},{"name":"马人娘","url":"https://origin.picgo.net/2026/10/28/9902fd129b9061353298fd36142aeb0e968aafff64d69d45.png"},{"name":"曼德拉娘","url":"https://origin.picgo.net/2026/10/28/23bf9fce5804ca6c25fadce20c2c84656634f0eadf768e14.png"},{"name":"毛毛虫娘","url":"https://origin.picgo.net/2026/10/28/ae65ff49d8e0b05401d2120a0f5e173d4605897c1ef01fcb.png"},{"name":"梅达娘","url":"https://origin.picgo.net/2026/10/28/beed1adf3299ed0225cbdb3d4141d478ed857a2b902acb65.png"},{"name":"迷你蟹娘","url":"https://origin.picgo.net/2026/10/28/9c4faeeaae94d444f80f1d7cb3f08ddb29ed346ae3256bb2.png"},{"name":"米诺陶洛斯娘","url":"https://origin.picgo.net/2026/10/28/4086af7596adf7e044feef1d465ac7ea1c3454f84e80467a.png"},{"name":"蜜蜂娘","url":"https://origin.picgo.net/2026/10/28/a0e39c3c74c55d67a0aabc3ae6ddd5c9056aef47d73d2ddc.png"},{"name":"蘑菇娘","url":"https://origin.picgo.net/2026/10/28/409be64aa8a1d1089b0a18a422236fee36fc7ae0f01b90ed.png"},{"name":"魔界花娘","url":"https://origin.picgo.net/2026/10/28/7fdc562709ff0ac5cf675c44effa2cff3d3611561c24f2cb.png"},{"name":"魔像娘","url":"https://origin.picgo.net/2026/10/28/468b1345421e33dcf9ac8c9308135103d24053af47726eff.png"},{"name":"木乃伊娘","url":"https://origin.picgo.net/2026/10/28/d6181f38a11bbf26f6a795fd880a183cf6af3ab56b373992.png"},{"name":"鲶鱼娘","url":"https://origin.picgo.net/2026/10/28/f1e184db6d7c73d52fbacd1296b23e9487bb7dd3f7d15a25.png"},{"name":"凝胶立方娘","url":"https://origin.picgo.net/2026/10/28/8039a9215c6ff1b1c7a671d7645ffca95c389b76979af847.png"},{"name":"螃蟹娘","url":"https://origin.picgo.net/2026/10/28/516031421b3ac1c2f9391fc5dbf2398f797de8167678c0b7.png"},{"name":"青蛙娘","url":"https://origin.picgo.net/2026/10/28/5ce3aaa869b9fbc5561cb3f5db5101e1db582ab31fedd900.png"},{"name":"蚯蚓娘","url":"https://origin.picgo.net/2026/10/28/a585c7dc9295e9fd04315896684c370b0d2da993f1816cec.png"},{"name":"犬娘","url":"https://origin.picgo.net/2026/10/28/99558077efd65ae58f060915964700312a0010988cc31117.png"},{"name":"裙带菜娘","url":"https://origin.picgo.net/2026/10/28/2bb68a641fada892348336371fab48a3df1c9657ee97bdd8.png"},{"name":"人魂娘","url":"https://origin.picgo.net/2026/10/28/724112a33a472aeff23dd9d94f93df62700db6d19ba0205a.png"},{"name":"熔岩娘","url":"https://origin.picgo.net/2026/10/28/67b54f4f1e09ca962fe2b770589a23fba08e040dca3ad977.png"},{"name":"沙虫娘","url":"https://origin.picgo.net/2026/10/28/bb15ee0bf69143350d1962490c544f51dc810ecad255a3bd.png"},{"name":"沙拉克娘","url":"https://origin.picgo.net/2026/10/28/3b8d93d28356bfe5d4a831835964a0bdd81fd6afbe82e863.png"},{"name":"珊瑚娘","url":"https://origin.picgo.net/2026/10/28/a95b9e2781ffda815b748e8ea37a1dbd353745667ddbcb73.png"},{"name":"石像鬼娘","url":"https://origin.picgo.net/2026/10/28/3b46c91efce6e5fa8a62b73337cd8435260d2a5de54f715a.png"},{"name":"食蚁兽娘","url":"https://origin.picgo.net/2026/10/28/fc4d6fc80b7d3ee6d7bf4313ff8b6eef2468f6c4db8c658b.png"},{"name":"史莱姆贝丝娘","url":"https://origin.picgo.net/2026/10/28/ee51dfe0bc107b7401f0e2c53f97cece22ef815b8a642556.png"},{"name":"史莱姆娘","url":"https://origin.picgo.net/2026/10/28/57e44bb34c4ea2dc8c1e34162f63c998bceffb545c66300b.png"},{"name":"兽人娘","url":"https://origin.picgo.net/2026/10/28/09a7bccb99feeb65b099f790a64015042e5abafafec99442.png"},{"name":"鼠娘","url":"https://origin.picgo.net/2026/10/28/c1d906829dc9f6b040caa0ccc884197bf1b52b0d288701f4.png"},{"name":"树绳妖娘","url":"https://origin.picgo.net/2026/10/28/a11f9d839184bbbce586ff9013d9b518b93e0be9a9f23f28.png"},{"name":"水龙娘","url":"https://origin.picgo.net/2026/10/28/8f10c8f38808dc84f70eec66bde24b7f62b1e86db325429a.png"},{"name":"水母娘","url":"https://origin.picgo.net/2026/10/28/b1fb03109b1b1f91f358b42bac2e40ce6313cc3e2f7a86f0.png"},{"name":"水蛭娘","url":"https://origin.picgo.net/2026/10/28/c61297c82fdb45b60915dc031ba05aa216c3ba0ece3fe5b8.png"},{"name":"塔兰图拉毒蛛娘","url":"https://origin.picgo.net/2026/10/28/ef8b5a170c3cc2ac3e8f2d2ade69c11b834fcaba9977a20d.png"},{"name":"螳螂娘","url":"https://origin.picgo.net/2026/10/28/f881f1cce4bc996a93666b255c7d05c36ad38924918cfc53.png"},{"name":"涂魔像娘","url":"https://origin.picgo.net/2026/10/28/9d9802f81f74c17c033b1ca4b3d33562defe83c56341790b.png"},{"name":"兔娘","url":"https://origin.picgo.net/2026/10/28/dbc068e68131ecefcb8122e03ad860d299cab8031c32ebbe.png"},{"name":"兔子史莱姆娘","url":"https://origin.picgo.net/2026/10/28/d81cc92cd1cd00f66c73a6370e678205b5715746842891bb.png"},{"name":"鸵鸟娘","url":"https://origin.picgo.net/2026/10/28/1b0c01f0a17c0c0f4818a7c016eb2f822fc75cc5a4275413.png"},{"name":"薇薇尔娘","url":"https://origin.picgo.net/2026/10/28/817818981a0648e5189883a73fe23df6248200060eac64cb.png"},{"name":"蚊子娘","url":"https://origin.picgo.net/2026/10/28/5dcaabb74b97ecf1bf64a13e946760e94f4c3e9ed6baea44.png"},{"name":"蜈蚣娘","url":"https://origin.picgo.net/2026/10/28/bf43874c621348d0798da5724b8542586617f6066cc302ad.png"},{"name":"西瓜娘","url":"https://origin.picgo.net/2026/10/28/d8415ebe086db3a27fef15fbbabb97776b1e1ce9b7f935d1.png"},{"name":"仙人掌娘","url":"https://origin.picgo.net/2026/10/28/fa44e31e89799d996656df6962d8debdd6bcf8a5c606e359.png"},{"name":"蝎娘","url":"https://origin.picgo.net/2026/10/28/75815ec60643409ef0f7350e81c18c4e32b454309600e6e3.png"},{"name":"眼镜蛇娘","url":"https://origin.picgo.net/2026/10/28/af25d06b3b5fe5afdea861c074eec9615def28dbaf970459.png"},{"name":"羊娘","url":"https://origin.picgo.net/2026/10/28/be113122b589cce93df2c8c69fdb71cbfd5362124e49222a.png"},{"name":"一反木绵娘","url":"https://origin.picgo.net/2026/10/28/50810cdd4e2ecbfd5e87d065d69f43ae7022cdd61e5326c1.png"},{"name":"蚁娘","url":"https://origin.picgo.net/2026/10/28/3907e0ee33a465d89c2c0f6e790696a2ca0cd54633e8b2cb.png"},{"name":"蚁狮娘","url":"https://origin.picgo.net/2026/10/28/1f9374e90de53237052987c5193db1e1195d55b3e10ea6fc.png"},{"name":"隐形虫娘","url":"https://origin.picgo.net/2026/10/28/fb8ba229b3ee96862f7eb393466d4afd38d5299c7fd1079b.png"},{"name":"影子娘","url":"https://origin.picgo.net/2026/10/28/3322ef5b93c94aa1bce8b8a3b233f5ce241db1302793c83e.png"},{"name":"幽灵娘","url":"https://origin.picgo.net/2026/10/28/cf1564b37aafe97ea663fdf8c6789340470d46ee0b866bee.png"},{"name":"粘体娘","url":"https://origin.picgo.net/2026/10/28/ca0df5743898ae2911b58133673d75165fa90e1b4bee8416.png"},{"name":"蟑螂娘","url":"https://origin.picgo.net/2026/10/28/ba6f0fc85caefe46e77ffd1cb2e5b927bd6f32c9976adb2c.png"},{"name":"蜘蛛娘","url":"https://origin.picgo.net/2026/10/28/84057681c5c653ecc92a2e8c8dca59be8a345c8bb98f462c.png"},{"name":"猪笼草娘","url":"https://origin.picgo.net/2026/10/28/e7781a22196f499c033de6d23a70e993561c66798cd04f2a.png"},{"name":"自动机娘","url":"https://origin.picgo.net/2026/10/28/ae4dd049804105743354608bb5dc0f778de664b9e308f2b0.png"},{"name":"诅咒人偶娘","url":"https://origin.picgo.net/2026/10/28/0baf0f85a72fd465c4d6287a59741f7248b78490c42df8b6.png"}];
+
   /* ── 核心全屏背景图 ── */
   const DEFAULT_BG = 'https://origin.picgo.net/2026/09/16/SCG1101ffb6de303f5be17a.png';
   const FREE_IMAGE = 'https://origin.picgo.net/2026/09/16/6daa8638-6d52-43c0-ac2d-33a3a2ed73f971da53c71fc72f8b.png';
@@ -22,6 +25,48 @@
   };
 
   const IRIS_SPRITE = 'https://origin.picgo.net/2026/09/19/d47108f4-b5ba-4f4b-b4ab-7adb0894be09ba85294f3aa3f3b9.png';
+
+  /* ══ 新增四大扩展的占位立绘 ══════════════════════════════════════════
+     这里先用 SVG 占位图，保证界面不缺图；有正式立绘后，把 URL 填进
+     KRS_ART_OVERRIDE 即可，键名用扩展名或角色名。
+     ────────────────────────────────────────────────────────────────── */
+  const KRS_ART_OVERRIDE = {
+    covers: {
+      '勇战-圣特拉篇': 'https://origin.picgo.net/2026/10/28/image18c3700954ce68b0.png',
+      'SEQUEL-贝蕾特里亚篇': 'https://origin.picgo.net/2026/10/28/b0159f28a82dbe269496f59dc9617d927e2c73a55a48cd4e.png',
+      '魔复夜-无名之城篇': 'https://origin.picgo.net/2026/10/28/699f2e6bd3cb65072995059235366813ebb4bf8fcb52a90c.png',
+      '救主记-贝尔蒂篇': 'https://origin.picgo.net/2026/10/28/e996a0904e2550b0dfe72fde8d94cb49be18ac53ee7ad523.png'
+    },
+    chars: {}
+  };
+  function krsArtSvg(text, sub, c1, c2, w, h) {
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">'
+      + '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">'
+      + '<stop offset="0" stop-color="' + c1 + '"/><stop offset="1" stop-color="' + c2 + '"/></linearGradient></defs>'
+      + '<rect width="100%" height="100%" fill="url(#g)"/>'
+      + '<text x="50%" y="46%" text-anchor="middle" font-size="' + Math.round(w / 6) + '" fill="rgba(255,255,255,0.12)" font-family="serif">' + text + '</text>'
+      + '<text x="50%" y="58%" text-anchor="middle" font-size="' + Math.round(w / 16) + '" fill="rgba(240,226,182,0.92)" font-family="serif">' + text + '</text>'
+      + (sub ? '<text x="50%" y="70%" text-anchor="middle" font-size="' + Math.round(w / 34) + '" fill="rgba(255,255,255,0.5)" font-family="serif">' + sub + '</text>' : '')
+      + '</svg>';
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+  function krsCover(key, emoji, c1, c2, w, h) {
+    if (KRS_ART_OVERRIDE.covers[key]) return KRS_ART_OVERRIDE.covers[key];
+    return krsArtSvg(key, emoji, c1, c2, w, h);
+  }
+  function krsCharArt(name, c1, c2, w, h) {
+    if (KRS_ART_OVERRIDE.chars[name]) return KRS_ART_OVERRIDE.chars[name];
+    const W = w || 120, H = h || 120;
+    const big = W * 0.44, small = W * 0.1;
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '">'
+      + '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">'
+      + '<stop offset="0" stop-color="' + c1 + '"/><stop offset="1" stop-color="' + c2 + '"/></linearGradient></defs>'
+      + '<rect width="100%" height="100%" fill="url(#g)"/>'
+      + '<text x="50%" y="58%" text-anchor="middle" font-size="' + Math.round(big) + '" fill="rgba(240,226,182,0.9)" font-family="serif">' + name.slice(0, 1) + '</text>'
+      + (H > 200 ? '<text x="50%" y="82%" text-anchor="middle" font-size="' + Math.round(small) + '" fill="rgba(255,255,255,0.55)" font-family="serif">' + name + '</text>' : '')
+      + '</svg>';
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
 
   /* ── [医术师 / 温伯格帝国] 北方篇 ── */
   const IJ_SPRITE = 'https://origin.picgo.net/2026/09/29/a120f9e4f3f70a376a3ea9c793fd21e48eea71d04da8e5ef9d583f90.jpg';
@@ -110,6 +155,42 @@
       { name: '普莉姆拉', title: '医务担当 · 兽人治愈术士', avatar: 'https://origin.picgo.net/2026/10/09/f7f280b17e6d7805d7897ba696a1e20d3b8f10b29e9d8c94.png', bigImg: 'https://origin.picgo.net/2026/10/09/884cc922fd1904e67993d69e7d3445d5dffde6651ddc6375.png', desc: '把诺艾儿从边缘拉回来的人。检查身体时语气完全职业化，收尾永远是一句「乖，乖」。' },
       { name: '蒂格蕾娜·索菈', title: '机械工学科Ⅳ级生', avatar: 'https://origin.picgo.net/2026/10/09/2ec536e01e4a1d8fa5e03a3d0108a67f6fbb29064719cdbf.png', bigImg: 'https://origin.picgo.net/2026/10/09/2ec536e01e4a1d8fa5e03a3d0108a67f6fbb29064719cdbf.png', desc: '黑进医疗档案、记住了诺艾儿名字的技工。好奇心压倒一切礼节，关心人的方式是偷偷把你的装备修好。' },
       { name: '阿尔玛·奥普菲帕姆', title: '同班同学', avatar: 'https://origin.picgo.net/2026/10/09/c198a204eee2c132480f921abc2d8ef9a3e0f3b392fc4390.png', bigImg: 'https://origin.picgo.net/2026/10/09/228295f011fe1684404359630b437c4b25a11bf8ad3f0d13.png', desc: '袭击那天她在场，却什么都没能做。最想说话、也最不敢说话的那个人。' }
+    ],
+    '勇战-圣特拉篇': [
+      { name: "鲁卡", title: "未受祝福的勇者", avatar: "https://origin.picgo.net/2026/10/28/0b52a3250d716905651aec5f7b1eeee5f2bd76fc6c64aecb.png", bigImg: "https://origin.picgo.net/2026/10/28/0b52a3250d716905651aec5f7b1eeee5f2bd76fc6c64aecb.png", desc: "伊莉娅丝村出身的青年，父亲是传说勇者马鲁塞勒斯。受女神启示出发，却只得到「未受祝福的勇者」之名。" },
+      { name: "艾丽丝", title: "魔王艾丽丝菲兹16世", avatar: "https://origin.picgo.net/2026/10/28/aceff91b1f4b833b2c75673bac151e529914b1c77136f386.png", bigImg: "https://origin.picgo.net/2026/10/28/aceff91b1f4b833b2c75673bac151e529914b1c77136f386.png", desc: "魔王城的正统君主。被卷入异变后与勇者同行，全篇的核心同伴。" },
+      { name: "伊莉娅丝", title: "创世女神", avatar: "https://origin.picgo.net/2026/10/28/0f80956432e00c1f5b90eaf5fc41618745b391dae780ae5c.png", bigImg: "https://origin.picgo.net/2026/10/28/0f80956432e00c1f5b90eaf5fc41618745b391dae780ae5c.png", desc: "被西南诸国奉为创世女神的造物，天界之主。三十年前从世上消失，只留下照旧运转的教会。" },
+      { name: "索尼娅", title: "神殿僧侣", avatar: "https://origin.picgo.net/2026/10/28/dee9c2b8fc26965107455c8065432ef7dd9ff17579aefbff.png", bigImg: "https://origin.picgo.net/2026/10/28/dee9c2b8fc26965107455c8065432ef7dd9ff17579aefbff.png", desc: "伊莉娅丝村的神殿僧侣、鲁卡的青梅竹马。表层是村口旅馆的女儿，底层是历史修正程序。" },
+      { name: "普罗米斯汀", title: "下位天使·图书管理员", avatar: "https://origin.picgo.net/2026/10/28/552fb944682eaa23dd0870f528edde5f1aac3fa97b55abc2.png", bigImg: "https://origin.picgo.net/2026/10/28/552fb944682eaa23dd0870f528edde5f1aac3fa97b55abc2.png", desc: "未经许可私自行事的研究者，自称「大罪人」，同伴叫她「不良天使」。" }
+    ],
+    '救主记-贝尔蒂篇': [
+      { name: "贞德", title: "贝尔蒂首位女骑士", avatar: "https://origin.picgo.net/2026/10/28/40c3ac737627dd576bb68b79ed77564e6a2c63c4b5f353f6.png", bigImg: "https://origin.picgo.net/2026/10/28/40c3ac737627dd576bb68b79ed77564e6a2c63c4b5f353f6.png", desc: "贝尔蒂建国以来第一位女骑士，莉莉的护卫兼青梅竹马。祭殿之变后唯一还戴着王室戒指的人。" },
+      { name: "莉莉", title: "公主→首位女王", avatar: "https://origin.picgo.net/2026/10/28/81d57dfab57509d20b3fbf236b24de3b16064c90a62c3dc5.png", bigImg: "https://origin.picgo.net/2026/10/28/81d57dfab57509d20b3fbf236b24de3b16064c90a62c3dc5.png", desc: "贝尔蒂的王位继承人，即位后成为史上第一位女王。父亲长年抱病，母亲在她记事之前已去世。" },
+      { name: "戴安娜", title: "女仆", avatar: "https://origin.picgo.net/2026/10/28/c952293e0c4a4d1931ed24a2fe518d5ff6b0f0ed581b52e5.png", bigImg: "https://origin.picgo.net/2026/10/28/c952293e0c4a4d1931ed24a2fe518d5ff6b0f0ed581b52e5.png", desc: "贞德家的女仆。此前在王城受训，祭殿之变后被派来服侍贞德。" },
+      { name: "加兰哈德", title: "圣骑士", avatar: "https://origin.picgo.net/2026/10/28/34c83b8bf6c74dc4b03fdbe8652d180153d068f771ce38d6.png", bigImg: "https://origin.picgo.net/2026/10/28/34c83b8bf6c74dc4b03fdbe8652d180153d068f771ce38d6.png", desc: "王都特雷普斯的圣骑士，贞德的前辈。此前是施万庭魔导侯家的骑士。" },
+      { name: "尤克夏", title: "火之精灵", avatar: "https://origin.picgo.net/2026/10/28/6a3b79169e8ba2cd5ec39339590b58aa35bf0fbf0504eb85.png", bigImg: "https://origin.picgo.net/2026/10/28/6a3b79169e8ba2cd5ec39339590b58aa35bf0fbf0504eb85.png", desc: "沉睡在王室戒指里的火之精灵，灵地是熔岩矿坑。" },
+      { name: "菲玖", title: "风之精灵", avatar: "https://origin.picgo.net/2026/10/28/500169bb6908d3e6fe5a098a9aa5c7452d54a69cb07d4768.png", bigImg: "https://origin.picgo.net/2026/10/28/500169bb6908d3e6fe5a098a9aa5c7452d54a69cb07d4768.png", desc: "王室戒指里的风之精灵，灵地是翡翠山峰。自由的风是友亦是敌。" },
+      { name: "米娜", title: "水之精灵", avatar: "https://origin.picgo.net/2026/10/28/0b33f03f03805b13790a1dfbc8889f5b74073e14e49cbf60.png", bigImg: "https://origin.picgo.net/2026/10/28/0b33f03f03805b13790a1dfbc8889f5b74073e14e49cbf60.png", desc: "王室戒指里的水之精灵，灵地是珊瑚溶洞。" },
+      { name: "琪琪露", title: "大地之精灵", avatar: "https://origin.picgo.net/2026/10/28/edeb723a27713cd0fb224633f9fe53260a5bd46ed16e0a74.png", bigImg: "https://origin.picgo.net/2026/10/28/edeb723a27713cd0fb224633f9fe53260a5bd46ed16e0a74.png", desc: "王室戒指里的大地之精灵，灵地是黄金沙漠。" },
+      { name: "优依", title: "雪之精灵", avatar: "https://origin.picgo.net/2026/10/28/d1fcd8eee4c3af3db8a6ef945424f34c4e16d58e56672b17.png", bigImg: "https://origin.picgo.net/2026/10/28/d1fcd8eee4c3af3db8a6ef945424f34c4e16d58e56672b17.png", desc: "在阿达曼银岭诞生、由贞德命名的雪之精灵，称贞德「妈妈」。" }
+    ],
+    'SEQUEL-贝蕾特里亚篇': [
+      { name: "拉比", title: "机械师", avatar: "https://origin.picgo.net/2026/10/28/24ea1cc0321954ef979e0799f1bf446d3828a4a69fc00bbe.png", bigImg: "https://origin.picgo.net/2026/10/28/24ea1cc0321954ef979e0799f1bf446d3828a4a69fc00bbe.png", desc: "海文的万事屋兼机械师，替人跑腿、修机械、找玛娜。把失忆的男人从遗弃设施里带出来的人。" },
+      { name: "戴亚", title: "只有头的那位", avatar: "https://origin.picgo.net/2026/10/28/62ac61b30767c87b3b6966f7024b7f4a522076eb571b8552.png", bigImg: "https://origin.picgo.net/2026/10/28/62ac61b30767c87b3b6966f7024b7f4a522076eb571b8552.png", desc: "拉比的搭档，一台以人类生命为动力、只剩一颗头的机械。负责情报与吐槽。" },
+      { name: "乌菈", title: "商会底层人员", avatar: "https://origin.picgo.net/2026/10/28/fe54d7b05091d8d650e22bca1bbe0c4c09e71664fda412c1.png", bigImg: "https://origin.picgo.net/2026/10/28/fe54d7b05091d8d650e22bca1bbe0c4c09e71664fda412c1.png", desc: "奥拉姆商会海文分店的商会员。出了城就是向导、情报贩子与玛娜探测器操作者。" },
+      { name: "库卢哈", title: "魔物女", avatar: "https://origin.picgo.net/2026/10/28/1519a7080462f341275f4e64476fa0ef057cc400d76fed45.png", bigImg: "https://origin.picgo.net/2026/10/28/1519a7080462f341275f4e64476fa0ef057cc400d76fed45.png", desc: "帕尔革多的冒险者、边境隐宿的主人。自己认领的身份是「人类」，见过她出手的人不这么看。" },
+      { name: "皮丽拉", title: "忒库利·收藏家", avatar: "https://origin.picgo.net/2026/10/28/6fe78d1496335ec5ce0bf16a35783d82f8f298d707ffeda5.png", bigImg: "https://origin.picgo.net/2026/10/28/6fe78d1496335ec5ce0bf16a35783d82f8f298d707ffeda5.png", desc: "丝拉克族的忒库利，以采集、收集为业。受商会与凯米迦之托寻找「外侧的素材」。" },
+      { name: "蕾库", title: "科尔玛娜", avatar: "https://origin.picgo.net/2026/10/28/1d0d60fc895202b52f63cd79542ade944c2fe9d1f517e0d6.png", bigImg: "https://origin.picgo.net/2026/10/28/1d0d60fc895202b52f63cd79542ade944c2fe9d1f517e0d6.png", desc: "四科尔玛娜之一，被当作神又被遗忘的那一个。独自在劳维茵游荡的复仇者。" },
+      { name: "欧里丝", title: "新的英雄", avatar: "https://origin.picgo.net/2026/10/28/940cd961d36816a28988f052a893f18d082284ec0bcb1b17.png", bigImg: "https://origin.picgo.net/2026/10/28/940cd961d36816a28988f052a893f18d082284ec0bcb1b17.png", desc: "阿尔菜特的骑士，三贵族家系之一奥尔丁家的独女。民间叫她「新的英雄」。" },
+      { name: "蕾斯缇亚", title: "虫与人的混血", avatar: "https://origin.picgo.net/2026/10/28/d775fe464b0f674bc549f0792117e3820d9f6599eb18de3e.png", bigImg: "https://origin.picgo.net/2026/10/28/d775fe464b0f674bc549f0792117e3820d9f6599eb18de3e.png", desc: "虫之女王辛的养女、妖精与人类的混血。公会名册上只有「冒险者」这一行。" },
+      { name: "艾梅拉", title: "好的夜魔", avatar: "https://origin.picgo.net/2026/10/28/71462022d0583ce763cd5c6d256f4f4e4d4cb96593ad4c6e.png", bigImg: "https://origin.picgo.net/2026/10/28/71462022d0583ce763cd5c6d256f4f4e4d4cb96593ad4c6e.png", desc: "夏恩教会（琉宗）的修女，下等夜魔。职务是替人吸出欲望、榨取玛娜。" },
+      { name: "蒂塔", title: "第二刑务所典狱长", avatar: "https://origin.picgo.net/2026/10/28/9b23302ba30f7456c4e60dd958fe9ad866c8b6b216ad5513.png", bigImg: "https://origin.picgo.net/2026/10/28/9b23302ba30f7456c4e60dd958fe9ad866c8b6b216ad5513.png", desc: "伐斯塔斯的监狱管理者，祝圣记录上的「七号」，方舟的「被选中之人」。" },
+      { name: "库", title: "科尔玛娜", avatar: "https://origin.picgo.net/2026/10/28/df3b2e2655f6162522bf6b5d76fc43b563c89d1a8d93f0aa.png", bigImg: "https://origin.picgo.net/2026/10/28/df3b2e2655f6162522bf6b5d76fc43b563c89d1a8d93f0aa.png", desc: "四科尔玛娜之一，失忆的魔物。与蕾库同源，在库卢哈一行里最爱摆老资格。" },
+      { name: "露西卡", title: "整备士", avatar: "https://origin.picgo.net/2026/10/28/1fc7a0ff3a1f0fb7038418f8a0f0b4d979730afd7072f6eb.png", bigImg: "https://origin.picgo.net/2026/10/28/1fc7a0ff3a1f0fb7038418f8a0f0b4d979730afd7072f6eb.png", desc: "伐斯塔斯出身的技术者，机械人偶制作者。反机械统治组织「西西亚派」成员。" }
+    ],
+    '魔复夜-无名之城篇': [
+      { name: "阿拉蒂娅", title: "荆棘魔女", avatar: "https://origin.picgo.net/2026/10/28/31eb422a9769d6fff2dfe0a31e97a9345c1bb919f25d707b.png", bigImg: "https://origin.picgo.net/2026/10/28/31eb422a9769d6fff2dfe0a31e97a9345c1bb919f25d707b.png", desc: "废村出身、被教会通缉的魔女，也是英雄荆棘魔女的复制体。一身深蓝衣装、黑发金瞳，一剑一仇。" },
+      { name: "卡朵莲", title: "上级异端审判官", avatar: "https://origin.picgo.net/2026/10/28/569ce08721e501dafd728806464962989c44f2acb4425f50.png", bigImg: "https://origin.picgo.net/2026/10/28/569ce08721e501dafd728806464962989c44f2acb4425f50.png", desc: "教会魔女狩猎部队的上级异端审判官，公认最强也最仁慈的那一位；白衣、语气轻、下手彻底。" }
     ]
   };
 
@@ -240,6 +321,42 @@
       now: '诺艾儿·柯涅尔在贝尔米特学园袭击事件后卧床两周，刚刚靠着新的咏唱装置复学。姐姐吩咐的素材、森林里的魔族、伏沦岭兽人矿工的委托、以及遗迹深处那个说矮人语的存在，正一件件挤进她的日常。',
       worldChange: '【潘多拉西陲出现一片自成一套的边区：这里的魔法是被管理与认证的公共规格，魔族是从圣域方向渗透出来的野生灾害，而一个背着法杖的精灵少女正把断掉的那截重新接回去】',
       wbEntries: ["[摇篮]🎀摇篮世界 · 世界观合理化与角色索引", "[摇篮][地图]🎀摇篮世界地理", "[摇篮][地图]🎀格拉提亚地点", "[摇篮][地图]🎀摇篮世界国家表", "[摇篮]🎀诺艾儿 · 人设与背景", "[摇篮]🎀诺艾儿 · 语料", "[摇篮]🎀丽薇歌塔 · 人设与背景", "[摇篮]🎀丽薇歌塔 · 语料", "[摇篮]🎀伊夏 · 人设与背景", "[摇篮]🎀伊夏 · 语料", "[摇篮]🎀普莉姆拉 · 人设与背景", "[摇篮]🎀普莉姆拉 · 语料", "[摇篮]🎀蒂格蕾娜 · 人设与背景", "[摇篮]🎀蒂格蕾娜 · 语料", "[摇篮]🎀阿尔玛 · 人设与背景", "[摇篮]🎀阿尔玛 · 语料", "[摇篮]🎀提尔德 · 人设与语料", "[摇篮]🎀德尔菲尼 · 人设与语料", "[摇篮]🎀瓦罗斯 · 人设与语料", "[摇篮]🎀南丁格尔 · 人设与语料", "[摇篮]🎀奥斯托利亚 · 人设与语料", "[摇篮]🎀梅法 · 人设与语料", "[摇篮]🎀巴顿 · 人设与语料", "[摇篮]🎀爱莉丝 · 人设与语料"]
+    },
+    '勇战-圣特拉篇': {
+      tags: ['[勇战]'],
+      avatar: krsCover("勇战-圣特拉篇", "🗡️", "#6d1f24", "#140b0d", 420, 300),
+      bigImg: krsCover("勇战-圣特拉篇", "🗡️", "#6d1f24", "#140b0d", 900, 520),
+      bg: "【勇战】潘多拉大陆西南：伊莉娅丝、圣特拉、赫尔贡多三大区。三十年前大异变隆起雪之大陆，魔力暴增、人魔自此基本共存；伊莉娅丝不再降临，勇者的洗礼沦为一场空仪式。",
+      now: "鲁卡在伊莉娅丝村后山救下被魔物围住的村民，当天下午回到神殿接受洗礼，只得到「未受祝福的勇者」之名；他带着青梅竹马索尼娅，从村子出发。",
+      worldChange: "【恶神凯拉涅斯把「混沌」的缝隙挪到了西南：雪之大陆下的塔尔塔洛斯开始回应召唤，四天王中已有一位察觉世界线被改写】",
+      wbEntries: ["[勇战]🗡️勇战·世界观融合设定书","[勇战]🗡️敌人索引","[勇战][势力]🗡️勇战·势力表","[勇战][地图]🗡️勇战·地点表","[勇战][地图]🗡️勇战·地理表","[勇战][人设]🗡️鲁卡·基础档案","[勇战][人设]🗡️艾丽丝·基础档案","[勇战][人设]🗡️伊莉娅丝·基础档案","[勇战][人设]🗡️索尼娅·基础档案","[勇战][人设]🗡️普罗米斯汀·基础档案","[勇战][事件]🗡️魔城图罗曼卡与夜之国","[勇战][事件]🗡️塔尔塔洛斯与异界","[勇战][事件]🗡️人鱼与海贼","[勇战][事件]🗡️吸血鬼魔城与吸血鬼","[勇战][事件]🗡️哈比之塔与哈比","[勇战][事件]🗡️妖精之岛与妖精","[勇战][事件]🗡️拉米亚与斯库拉","[勇战][事件]🗡️魅魔村与魅魔"]
+    },
+    '救主记-贝尔蒂篇': {
+      tags: ['[救主记]'],
+      avatar: krsCover("救主记-贝尔蒂篇", "👑", "#1d2f5c", "#0b1020", 420, 300),
+      bigImg: krsCover("救主记-贝尔蒂篇", "👑", "#1d2f5c", "#0b1020", 900, 520),
+      bg: "【救主记】潘多拉大陆东北的小国贝尔蒂：王室代代以戒指与精灵缔约立国，初代王借精灵之力封印「虚幻的黑城」，并在各地刻下降王阵。",
+      now: "公主十八岁生日前夜，北方祭殿的仪式遭袭：精灵被强行解放、公主被掳，王室戒指留在贞德手上——她是唯一还能借精灵之力的人。",
+      worldChange: "【恶神凯拉涅斯在封印上添了一道裂缝：黑城不再只是蛊惑人心，它开始把「被封印的邪魔」往现世拖】",
+      wbEntries: ["[救主记][世界]👑贝尔蒂·世界观融合设定书","[救主记][势力]👑贝尔蒂·势力表","[救主记][地图]👑贝尔蒂·地点表","[救主记][地图]👑贝尔蒂·地理表","[救主记][人设]👑贞德·基础档案","[救主记][人设]👑莉莉·基础档案","[救主记][人设]👑戴安娜·基础档案","[救主记][人设]👑加兰哈德·基础档案","[救主记][人设]👑尤克夏·基础档案","[救主记][人设]👑菲玖·基础档案","[救主记][人设]👑米娜·基础档案","[救主记][人设]👑琪琪露·基础档案","[救主记][人设]👑优依·基础档案","[救主记][事件]👑四灵地","[救主记][事件]👑北方祭殿与选定之龙"]
+    },
+    'SEQUEL-贝蕾特里亚篇': {
+      tags: ['[SEQUEL]'],
+      avatar: krsCover("SEQUEL-贝蕾特里亚篇", "🌙", "#0f4d4a", "#08181a", 420, 300),
+      bigImg: krsCover("SEQUEL-贝蕾特里亚篇", "🌙", "#0f4d4a", "#08181a", 900, 520),
+      bg: "【SEQUEL】潘多拉大陆西北的贝蕾特里亚与封闭区「殖民地」：玛娜是燃料也是货币，贤人众、米尔艾斯军、奥拉姆商会三股势力维持着没有法律的秩序。",
+      now: "拉比与只剩一颗头的戴亚在海文接活；不灭的玛娜、机神遗迹与方舟伐斯塔斯同时被盯上，而科尔玛娜正从所有人的记忆里往回爬。",
+      worldChange: "【恶神凯拉涅斯把「遗忘」做成了武器：被忘记的三体开始从记录里往回爬，连它们自己都不确定该不该被想起来】",
+      wbEntries: ["[SEQUEL][世界]🌙SEQUEL·世界观融合设定书","[SEQUEL][势力]🌙SEQUEL·势力表","[SEQUEL][地图]🌙SEQUEL·地点表","[SEQUEL][地图]🌙SEQUEL·地理表","[SEQUEL][人设]🌙拉比·基础档案","[SEQUEL][人设]🌙戴亚·基础档案","[SEQUEL][人设]🌙乌菈·基础档案","[SEQUEL][人设]🌙库卢哈·基础档案","[SEQUEL][人设]🌙皮丽拉·基础档案","[SEQUEL][人设]🌙蕾库·基础档案","[SEQUEL][人设]🌙欧里丝·基础档案","[SEQUEL][人设]🌙蕾斯缇亚·基础档案","[SEQUEL][人设]🌙艾梅拉·基础档案","[SEQUEL][人设]🌙蒂塔·基础档案","[SEQUEL][人设]🌙库·基础档案","[SEQUEL][人设]🌙露西卡·基础档案","[SEQUEL][事件]🌙机神遗迹与方舟","[SEQUEL][事件]🌙科尔玛娜","[SEQUEL][事件]🌙封闭区与罗尼斯的刻印"]
+    },
+    '魔复夜-无名之城篇': {
+      tags: ['[魔复夜]'],
+      avatar: krsCover("魔复夜-无名之城篇", "🥀", "#3b1f47", "#120a16", 420, 300),
+      bigImg: krsCover("魔复夜-无名之城篇", "🥀", "#3b1f47", "#120a16", 900, 520),
+      bg: "【魔复夜】潘多拉大陆东南的无名之城：地上是石街、教堂与市集，地下是遗迹、牢狱与牧场；魔堕者从井里爬上来，教会以「净化」为名肃清。",
+      now: "阿拉蒂娅的村子在一夜之间被肃清。她作为英雄荆棘魔女的复制体活下来，带着没熄的火走进这座城，教会的白色审判官正整队出动。",
+      worldChange: "【恶神凯拉涅斯在「魔堕」里埋了第二条路：被净化的人不再只是死，而是变成可以被它调用的东西】",
+      wbEntries: ["[魔复夜][世界]🥀世界观融合设定书","[魔复夜][势力]🥀势力表","[魔复夜][地图]🥀地点表","[魔复夜][地图]🥀地理表","[魔复夜][人设]🥀阿拉蒂娅·基础档案","[魔复夜][事件]🥀废村与狩猎之夜","[魔复夜][事件]🥀教会肃清与地下"]
     }
   };
 
@@ -744,7 +861,113 @@
         prompt: '【维多利雅·命运主线】舞会散场的楼梯上，维多利雅停下来，说她记得你——在那场大火之前。'
       }
     ]
-  };;;;
+  };
+  /* ── 命运主线：凯拉涅斯移入原著第一位，其余保持原样；新增四扩展的角色追加在末尾 ── */
+  (function krsDestinyPatch() {
+    const D = DESTINY_CONFIG;
+    const branch = D.branch || (D.branch = []);
+    const origin = D.origin || (D.origin = []);
+    const i = branch.findIndex(function (x) { return x.name === '凯拉涅斯'; });
+    if (i >= 0) origin.unshift(branch.splice(i, 1)[0]);
+
+    D.linked.push(
+      { name: "艾丽丝", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/aceff91b1f4b833b2c75673bac151e529914b1c77136f386.png", prompt: "魔王城的王座厅里，第十六代魔王正为「艾丽丝菲兹17世」这个自称发火，回头看见你。" },
+      { name: "伊莉娅丝", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/0f80956432e00c1f5b90eaf5fc41618745b391dae780ae5c.png", prompt: "天界的阶梯尽头，创世女神垂下视线，说她给不出祝福，只能给你一个名字。" },
+      { name: "索尼娅", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/dee9c2b8fc26965107455c8065432ef7dd9ff17579aefbff.png", prompt: "伊莉娅丝村的旅馆清晨，青梅竹马一边验尸一边招呼你吃早饭。" },
+      { name: "普罗米斯汀", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/552fb944682eaa23dd0870f528edde5f1aac3fa97b55abc2.png", prompt: "口袋魔王城的研究室，下位天使把试管举到灯下，问你要不要当「样本」。" },
+      { name: "贞德", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/40c3ac737627dd576bb68b79ed77564e6a2c63c4b5f353f6.png", prompt: "祭殿的火还没熄，戴着王室戒指的女骑士回头，让你跟上。" },
+      { name: "莉莉", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/81d57dfab57509d20b3fbf236b24de3b16064c90a62c3dc5.png", prompt: "王宫的走廊，银灰长发的公主把金冠摘下来，问你她能不能不当公主。" },
+      { name: "戴安娜", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/c952293e0c4a4d1931ed24a2fe518d5ff6b0f0ed581b52e5.png", prompt: "贞德家的厨房，女仆把围裙系好，说「我是女仆」，然后把你按到餐桌前。" },
+      { name: "优依", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/d1fcd8eee4c3af3db8a6ef945424f34c4e16d58e56672b17.png", prompt: "阿达曼银岭的雪线上，刚诞生的雪之精灵抓着贞德的衣角，又怯生生看向你。" },
+      { name: "拉比", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/24ea1cc0321954ef979e0799f1bf446d3828a4a69fc00bbe.png", prompt: "海文的万事屋，机械师从机器底下钻出来，手里还攥着扳手，问你要不要接活。" },
+      { name: "乌菈", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/fe54d7b05091d8d650e22bca1bbe0c4c09e71664fda412c1.png", prompt: "奥拉姆商会的柜台后，底层商会员一边拨算盘一边把价目表推给你。" },
+      { name: "库卢哈", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/1519a7080462f341275f4e64476fa0ef057cc400d76fed45.png", prompt: "帕尔革多的边境隐宿，被称为「魔物女」的女人把猎刀搁在桌上，说住店要先谈价。" },
+      { name: "蕾库", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/1d0d60fc895202b52f63cd79542ade944c2fe9d1f517e0d6.png", prompt: "劳维茵的雾里，被遗忘的科尔玛娜抬起头，问你记不记得她的名字。" },
+      { name: "欧里丝", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/940cd961d36816a28988f052a893f18d082284ec0bcb1b17.png", prompt: "希斯玛岬角的诊疗所，阿尔菜特的骑士把剑靠在门边，说这里缺人手。" },
+      { name: "蕾斯缇亚", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/d775fe464b0f674bc549f0792117e3820d9f6599eb18de3e.png", prompt: "阿尔菜特的街角，盲眼的白杖行者先给出结论，再慢慢抽掉分量。" },
+      { name: "艾梅拉", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/71462022d0583ce763cd5c6d256f4f4e4d4cb96593ad4c6e.png", prompt: "夏恩教会的告解室，修女笑着说她是「好的夜魔」，问你要不要告解。" },
+      { name: "蒂塔", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/9b23302ba30f7456c4e60dd958fe9ad866c8b6b216ad5513.png", prompt: "第二刑务所的走廊，典狱长把钥匙串挂在腰上，说「七号」今天不见客。" },
+      { name: "库", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/df3b2e2655f6162522bf6b5d76fc43b563c89d1a8d93f0aa.png", prompt: "劳维茵的旧祭坛，另一个科尔玛娜从石阶上站起来，像在等一个很久以前的人。" },
+      { name: "阿拉蒂娅", linkKey: "魔复夜-无名之城篇", avatar: "https://origin.picgo.net/2026/10/28/31eb422a9769d6fff2dfe0a31e97a9345c1bb919f25d707b.png", prompt: "无名之城的桥街区，被通缉的魔女把剑横在膝上，火光照着她的金瞳。" },
+      { name: "卡朵莲", linkKey: "魔复夜-无名之城篇", avatar: "https://origin.picgo.net/2026/10/28/569ce08721e501dafd728806464962989c44f2acb4425f50.png", prompt: "地下圣教会的长廊，白衣的审判官停下脚步，问你有没有见过一个黑发金瞳的魔女。" }
+    );
+    branch.push(
+      { name: "鲁卡", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/0b52a3250d716905651aec5f7b1eeee5f2bd76fc6c64aecb.png", prompt: "伊莉娅丝村的后山，银白短发的少年把木剑背好，说他要去找父亲。" },
+      { name: "戴亚", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/62ac61b30767c87b3b6966f7024b7f4a522076eb571b8552.png", prompt: "海文的路边，一颗会说话的机械头滚到你脚边，让你把他捡起来。" },
+      { name: "加兰哈德", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/34c83b8bf6c74dc4b03fdbe8652d180153d068f771ce38d6.png", prompt: "王都特雷普斯的练兵场，圣骑士把剑插进地里，问你有没有见过贞德。" }
+    );
+    branch.push(
+      { name: "QQ", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/QQc68390a11575fd28.png", prompt: "【QQ·命运主线】在勇战的世界里，QQ正等着与你相遇。" },
+      { name: "TT", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/TTe4d88cca2b1c13de.png", prompt: "【TT·命运主线】在勇战的世界里，TT正等着与你相遇。" },
+      { name: "阿加利亚雷普特", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/5ff594a5f26a7b2a159ceec474575e6c43083fe5124f2f24.png", prompt: "【阿加利亚雷普特·命运主线】在勇战的世界里，阿加利亚雷普特正等着与你相遇。" },
+      { name: "阿露艾露玛", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/dcde36d89b1a44cb35858c53cd6c1c652605baeaba81b6b2.png", prompt: "【阿露艾露玛·命运主线】在勇战的世界里，阿露艾露玛正等着与你相遇。" },
+      { name: "阿皮洛・拉戈斯", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/6bfd750e71640a59efb68a6e5b2674ac79bccae9f03f758d.png", prompt: "【阿皮洛・拉戈斯·命运主线】在勇战的世界里，阿皮洛・拉戈斯正等着与你相遇。" },
+      { name: "阿斯塔洛特", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/79eeb4b610d7f18b15154bc3e775af1ec25a69dad7c0f835.png", prompt: "【阿斯塔洛特·命运主线】在勇战的世界里，阿斯塔洛特正等着与你相遇。" },
+      { name: "艾克斯・索尼娅", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/13bf9ae73a3be135a6c944e27b2a789726459aeba670db89.png", prompt: "【艾克斯・索尼娅·命运主线】在勇战的世界里，艾克斯・索尼娅正等着与你相遇。" },
+      { name: "艾丽丝菲兹3世", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/3c199adb5c6775871.png", prompt: "【艾丽丝菲兹3世·命运主线】在勇战的世界里，艾丽丝菲兹3世正等着与你相遇。" },
+      { name: "艾丽丝菲兹4世", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/462461347bffc037c.png", prompt: "【艾丽丝菲兹4世·命运主线】在勇战的世界里，艾丽丝菲兹4世正等着与你相遇。" },
+      { name: "艾丽丝菲兹10世", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/1067663703b343dea0.png", prompt: "【艾丽丝菲兹10世·命运主线】在勇战的世界里，艾丽丝菲兹10世正等着与你相遇。" },
+      { name: "艾丽丝菲兹15世", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/15263fd139c62b0e6e.png", prompt: "【艾丽丝菲兹15世·命运主线】在勇战的世界里，艾丽丝菲兹15世正等着与你相遇。" },
+      { name: "艾露贝提耶", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/9247c2ca1b310ea64b3462611278e3e1670b87ed765fe026.png", prompt: "【艾露贝提耶·命运主线】在勇战的世界里，艾露贝提耶正等着与你相遇。" },
+      { name: "白兔", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/a272cac4dcb3960a5514d3816fb273460f682c944195e485.png", prompt: "【白兔·命运主线】在勇战的世界里，白兔正等着与你相遇。" },
+      { name: "法蒂玛", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/fb0b026fa22e1ebc8fd820f1d6a10f61d4d421260166ace8.png", prompt: "【法蒂玛·命运主线】在勇战的世界里，法蒂玛正等着与你相遇。" },
+      { name: "格诺西丝", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/8d2a01d6076030b298901e60b63e2431e419f7757f5ffd97.png", prompt: "【格诺西丝·命运主线】在勇战的世界里，格诺西丝正等着与你相遇。" },
+      { name: "古兰贝莉娅", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/cc72c9263d2d0af19196c2ba21e512bb4c2b24840248bb81.png", prompt: "【古兰贝莉娅·命运主线】在勇战的世界里，古兰贝莉娅正等着与你相遇。" },
+      { name: "黑之艾丽丝", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/3b280659f2d28286720c4c0a4258d8a38cd20d0cb5310a3c.png", prompt: "【黑之艾丽丝·命运主线】在勇战的世界里，黑之艾丽丝正等着与你相遇。" },
+      { name: "机械降神", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/539dfa775875de0592a6e105ca6154484bb5ad7a8ee28a9b.png", prompt: "【机械降神·命运主线】在勇战的世界里，机械降神正等着与你相遇。" },
+      { name: "卡桑德拉", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/d385822f69f5ac405f4acbe0d0a1052f95d720063f1b17d9.png", prompt: "【卡桑德拉·命运主线】在勇战的世界里，卡桑德拉正等着与你相遇。" },
+      { name: "克莱奥・阿德拉", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/9ca7ab3417e113e5486a39e07b2670e571181f50f9d68eec.png", prompt: "【克莱奥・阿德拉·命运主线】在勇战的世界里，克莱奥・阿德拉正等着与你相遇。" },
+      { name: "拉斐艾拉", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/a4f749b3a9c50c01f02e2f0363458d58f96f7255f17ea2e2.png", prompt: "【拉斐艾拉·命运主线】在勇战的世界里，拉斐艾拉正等着与你相遇。" },
+      { name: "莉莉丝", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/1918632b4fb1ed5c299e26aea514b407c025e13a4006d468.png", prompt: "【莉莉丝·命运主线】在勇战的世界里，莉莉丝正等着与你相遇。" },
+      { name: "路西菲娜", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/08c9d6b71412f08607f8e3455ba6a6912cbf44b69eea3ed2.png", prompt: "【路西菲娜·命运主线】在勇战的世界里，路西菲娜正等着与你相遇。" },
+      { name: "马鲁塞勒斯", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/b4ebd53577168ba3dc2094e8f854aa11c8861aa77b31833f.png", prompt: "【马鲁塞勒斯·命运主线】在勇战的世界里，马鲁塞勒斯正等着与你相遇。" },
+      { name: "梅菲斯特", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/1fb1be59345533d72fc9c9bdb12ab62cda7d39c6294614a5.png", prompt: "【梅菲斯特·命运主线】在勇战的世界里，梅菲斯特正等着与你相遇。" },
+      { name: "米迦艾拉", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/36b42c1cf906cade274f12979dd489b2822f29b12808c4c6.png", prompt: "【米迦艾拉·命运主线】在勇战的世界里，米迦艾拉正等着与你相遇。" },
+      { name: "摩莉甘", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/ab4396e009821f188991edbfb62bf3f75aa6173f2431847b.png", prompt: "【摩莉甘·命运主线】在勇战的世界里，摩莉甘正等着与你相遇。" },
+      { name: "尼菲特・泰罗斯", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/cf0ffbed524b16b8328e47c6a19aedf16a406835403a5c29.png", prompt: "【尼菲特・泰罗斯·命运主线】在勇战的世界里，尼菲特・泰罗斯正等着与你相遇。" },
+      { name: "努尔・科吉托", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/992d055dbe6826b1a79da60d8464c78e56e15a2f512c7a7f.png", prompt: "【努尔・科吉托·命运主线】在勇战的世界里，努尔・科吉托正等着与你相遇。" },
+      { name: "诺姆", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/10c978a7a99babfdacc6d483d816de85693e21e4298fb3c7.png", prompt: "【诺姆·命运主线】在勇战的世界里，诺姆正等着与你相遇。" },
+      { name: "胖次老师", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/da2f74e834e2d77bebc880026bfc5a130605a19f37c4269f.png", prompt: "【胖次老师·命运主线】在勇战的世界里，胖次老师正等着与你相遇。" },
+      { name: "萨拉曼达", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/206eaebab2e47531a0653ee906cf130b714f30e96dde3bf8.png", prompt: "【萨拉曼达·命运主线】在勇战的世界里，萨拉曼达正等着与你相遇。" },
+      { name: "沙蛇", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/d910a0d1ada0cb4b3c0f406241692752de4d6c4851bc56f8.png", prompt: "【沙蛇·命运主线】在勇战的世界里，沙蛇正等着与你相遇。" },
+      { name: "圣·伊莉娅王", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/105ed942c86bc5206465cee84fbf7d8623d675075bccd031.png", prompt: "【圣·伊莉娅王·命运主线】在勇战的世界里，圣·伊莉娅王正等着与你相遇。" },
+      { name: "死神", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/0f938348c2b75f870e4d03b31b0e551b3bf9ef41649f65ee.png", prompt: "【死神·命运主线】在勇战的世界里，死神正等着与你相遇。" },
+      { name: "温蒂妮", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/1565b0a237fc71a9621b875e3e2a742ccda6e627f4d5a929.png", prompt: "【温蒂妮·命运主线】在勇战的世界里，温蒂妮正等着与你相遇。" },
+      { name: "希尔芙", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/03e3b63134b4a4e1b3730edeeac621dc061403608c646af6.png", prompt: "【希尔芙·命运主线】在勇战的世界里，希尔芙正等着与你相遇。" },
+      { name: "锡安", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/beb7474a94211f6a55807409d2b3f7857f7ddab5b24c5be6.png", prompt: "【锡安·命运主线】在勇战的世界里，锡安正等着与你相遇。" },
+      { name: "伊迪亚・鲁卡斯", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/6addc5b6c9a08aa664c5c68272253650363040bc69280cfc.png", prompt: "【伊迪亚・鲁卡斯·命运主线】在勇战的世界里，伊迪亚・鲁卡斯正等着与你相遇。" },
+      { name: "伊甸", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/66585346903fbe70bedcef9a540a91f26c066a9e4d163b8b.png", prompt: "【伊甸·命运主线】在勇战的世界里，伊甸正等着与你相遇。" },
+      { name: "影䌷", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/d88900a3832ef3714c9580c06195c268a5bdab265db03805.png", prompt: "【影䌷·命运主线】在勇战的世界里，影䌷正等着与你相遇。" },
+      { name: "宇宙神蝶", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/7d5807caaa5f814154d0b3b1426145150b7479bec43c19f6.png", prompt: "【宇宙神蝶·命运主线】在勇战的世界里，宇宙神蝶正等着与你相遇。" },
+      { name: "玉藻", linkKey: "勇战-圣特拉篇", avatar: "https://origin.picgo.net/2026/10/28/3c9c1f31d592118d24af1214034ea3223811424807a1fe63.png", prompt: "【玉藻·命运主线】在勇战的世界里，玉藻正等着与你相遇。" },
+      { name: "尼克丝", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/bd17b1ae7e1dfac4df5e3487d97d037f662b090e963a6058.png", prompt: "【尼克丝·命运主线】在SEQUEL的世界里，尼克丝正等着与你相遇。" },
+      { name: "莉莉雅", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/16612d06d84884177efc2fb810cb7c7a4451962e0aacf3e0.png", prompt: "【莉莉雅·命运主线】在SEQUEL的世界里，莉莉雅正等着与你相遇。" },
+      { name: "克拉尔", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/731e84c1ae0bc4e3fceeddd03dbdfde54624fc666aacca86.png", prompt: "【克拉尔·命运主线】在SEQUEL的世界里，克拉尔正等着与你相遇。" },
+      { name: "玛莉亚", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/6d6238b29c15549814a4c74aff03bf352c62a36ebf477e71.png", prompt: "【玛莉亚·命运主线】在SEQUEL的世界里，玛莉亚正等着与你相遇。" },
+      { name: "纳兹娜", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/6f1cfd144adf2478f3330830191e76a413e2aa7dff31a23b.png", prompt: "【纳兹娜·命运主线】在SEQUEL的世界里，纳兹娜正等着与你相遇。" },
+      { name: "皮丽拉", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/6fe78d1496335ec5ce0bf16a35783d82f8f298d707ffeda5.png", prompt: "【皮丽拉·命运主线】在SEQUEL的世界里，皮丽拉正等着与你相遇。" },
+      { name: "茜拉", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/20693e8d16927f684edc19b97e722a97c904e951f6235801.png", prompt: "【茜拉·命运主线】在SEQUEL的世界里，茜拉正等着与你相遇。" },
+      { name: "缇蕾玛", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/656bce982972aa977bbdfba3378b2be37a6e971c08c34eea.png", prompt: "【缇蕾玛·命运主线】在SEQUEL的世界里，缇蕾玛正等着与你相遇。" },
+      { name: "雪娜", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/486c7f83edfec0b880f865d89e6bc504fe363750167626c4.png", prompt: "【雪娜·命运主线】在SEQUEL的世界里，雪娜正等着与你相遇。" },
+      { name: "凯米迦", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/10cfb9caff273075df6d535393f4a5bac27315ec3b124171.png", prompt: "【凯米迦·命运主线】在SEQUEL的世界里，凯米迦正等着与你相遇。" },
+      { name: "奥莉维亚", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/d7f711ef4b7efe68e8e2e62eed319ff7d5e3e84bc8fb6411.png", prompt: "【奥莉维亚·命运主线】在SEQUEL的世界里，奥莉维亚正等着与你相遇。" },
+      { name: "法莉亚", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/f6fd0e1a80ebea54a471da5eedeb8a657a71e4aaf72165f1.png", prompt: "【法莉亚·命运主线】在SEQUEL的世界里，法莉亚正等着与你相遇。" },
+      { name: "蕾达", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/68c366e8a42922d7e61b21a813de077d0d8f3dc19938abf1.png", prompt: "【蕾达·命运主线】在SEQUEL的世界里，蕾达正等着与你相遇。" },
+      { name: "露西卡", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/1fc7a0ff3a1f0fb7038418f8a0f0b4d979730afd7072f6eb.png", prompt: "【露西卡·命运主线】在SEQUEL的世界里，露西卡正等着与你相遇。" },
+      { name: "玛尼蒂", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/a68f5d650ce6f0b5f8dddcd440d24f4e1c78cb039ae1b118.png", prompt: "【玛尼蒂·命运主线】在SEQUEL的世界里，玛尼蒂正等着与你相遇。" },
+      { name: "维娜", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/0a0cee35d1cd90b760de343e42d03c7eaadb8058fc5dd843.png", prompt: "【维娜·命运主线】在SEQUEL的世界里，维娜正等着与你相遇。" },
+      { name: "尤贝尔", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/b2f5c878a848d79259d0279b796d8aaebc6b67e640b43ae8.png", prompt: "【尤贝尔·命运主线】在SEQUEL的世界里，尤贝尔正等着与你相遇。" },
+      { name: "约尔娜娅", linkKey: "SEQUEL-贝蕾特里亚篇", avatar: "https://origin.picgo.net/2026/10/28/5be4dc32ac077e02fcdccda655fda1f69708a7aeda2a13cf.png", prompt: "【约尔娜娅·命运主线】在SEQUEL的世界里，约尔娜娅正等着与你相遇。" },
+      { name: "內伊", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/18d3ad3b3f49607e42977621b2a15b10d6d830c14b090dd7.png", prompt: "【內伊·命运主线】在救主记的世界里，內伊正等着与你相遇。" },
+      { name: "尤克夏", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/6a3b79169e8ba2cd5ec39339590b58aa35bf0fbf0504eb85.png", prompt: "【尤克夏·命运主线】在救主记的世界里，尤克夏正等着与你相遇。" },
+      { name: "希利乌斯", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/71186294717dbeabcf0bd582c2a3cf2bb81be96615db3a4f.png", prompt: "【希利乌斯·命运主线】在救主记的世界里，希利乌斯正等着与你相遇。" },
+      { name: "琪琪露", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/edeb723a27713cd0fb224633f9fe53260a5bd46ed16e0a74.png", prompt: "【琪琪露·命运主线】在救主记的世界里，琪琪露正等着与你相遇。" },
+      { name: "米娜", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/0b33f03f03805b13790a1dfbc8889f5b74073e14e49cbf60.png", prompt: "【米娜·命运主线】在救主记的世界里，米娜正等着与你相遇。" },
+      { name: "菲玖", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/500169bb6908d3e6fe5a098a9aa5c7452d54a69cb07d4768.png", prompt: "【菲玖·命运主线】在救主记的世界里，菲玖正等着与你相遇。" },
+      { name: "雷格鲁斯", linkKey: "救主记-贝尔蒂篇", avatar: "https://origin.picgo.net/2026/10/28/331db4917cafa5bba69aff78e5958f0df4488b4ceca5f36b.png", prompt: "【雷格鲁斯·命运主线】在救主记的世界里，雷格鲁斯正等着与你相遇。" }
+    );
+  })();
+;;;
 
   const FREE_OPENINGS = [
     {
@@ -1354,6 +1577,11 @@
 
   const BIRTH_MAP = {
     factions: [
+      { cn: "勇战 · 西南三区", en: "Southwest: Ilias / Sentra / Helgondo", dlc: "※ 需开启【勇战】扩展", x: 890, y: 2500, w: 1040, h: 700, color: "rgba(192, 90, 90, 0.06)", border: "rgba(192, 90, 90, 0.3)" },
+      { cn: "贝尔蒂王国", en: "Kingdom of Bertie", dlc: "※ 需开启【救主记】扩展", x: 3140, y: 480, w: 1120, h: 560, color: "rgba(90, 120, 192, 0.06)", border: "rgba(90, 120, 192, 0.32)" },
+      { cn: "贝蕾特里亚 · 殖民地", en: "Bertelia & The Colony", dlc: "※ 需开启【SEQUEL】扩展", x: 515, y: 325, w: 820, h: 400, color: "rgba(74, 168, 160, 0.06)", border: "rgba(74, 168, 160, 0.32)" },
+      { cn: "无名之城 · 地下圣教会", en: "The Nameless City", dlc: "※ 需开启【魔复夜】扩展", x: 2920, y: 2480, w: 940, h: 620, color: "rgba(138, 90, 192, 0.06)", border: "rgba(138, 90, 192, 0.34)" },
+
       { cn: "埃斯特拉德尔帝国", en: "Central Estradel Empire", dlc: "", x: 1450, y: 1120, w: 940, h: 680, color: "rgba(230, 184, 92, 0.05)", border: "rgba(230, 184, 92, 0.3)" },
       { cn: "温伯格北方帝国", en: "Northern Weinberg Imperium", dlc: "※ 需开启【医术师 / 温伯格篇】扩展", x: 1450, y: 360, w: 1050, h: 480, color: "rgba(56, 189, 248, 0.05)", border: "rgba(56, 189, 248, 0.3)" },
       { cn: "戴尔王国 · 美吉斯塔", en: "Dale Kingdom · Megista", dlc: "※ 需开启【艾妮希雅】扩展", x: 560, y: 820, w: 760, h: 600, color: "rgba(244, 114, 182, 0.05)", border: "rgba(244, 114, 182, 0.3)" },
@@ -1365,6 +1593,41 @@
     
       { cn: "摇篮地带 · 西陲", en: "Cradle Frontier · West", dlc: "※ 需开启【摇篮 · 格拉提亚篇】扩展", x: -350, y: 1000, w: 760, h: 1180, color: "rgba(212, 165, 216, 0.05)", border: "rgba(212, 165, 216, 0.32)" },],
     nodes: [
+      { id: "海文", name: "海文", nation: "贝蕾特里亚 · 殖民地", type: "capital", icon: "🌙", x: 380, y: 320, desc: "贝蕾特里亚中心城，贤人众、商会与米尔艾斯军交汇。", cost: "传送剑 1日", fanAngle: 90, subs: ["中心街", "传送剑", "大竞技场", "奥拉姆商会"] },
+      { id: "阿鲁吉拉", name: "阿鲁吉拉", nation: "贝蕾特里亚 · 殖民地", type: "city", icon: "🛡️", x: 180, y: 200, desc: "米尔艾斯军驻屯地，枯竭大地上的军营与难民营。", cost: "马车 2日", fanAngle: 180, subs: ["驻屯地", "难民营", "边境哨所"] },
+      { id: "萨托瓦镇", name: "萨托瓦镇", nation: "贝蕾特里亚 · 殖民地", type: "city", icon: "🏚️", x: 800, y: 200, desc: "西北深处的探险者落脚点，开发室与研究室外露。", cost: "传送剑 1日", fanAngle: 0, subs: ["开发室", "研究室", "医务室"] },
+      { id: "机神遗迹", name: "机神遗迹", nation: "贝蕾特里亚 · 殖民地", type: "special", icon: "⚙️", x: 850, y: 330, desc: "沉睡三台守护机械的遗迹，层层向下。", cost: "遗迹通道 半日", fanAngle: 90, subs: ["钢之风", "大雷神像", "重火机龙"] },
+      { id: "伐斯塔斯", name: "伐斯塔斯", nation: "贝蕾特里亚 · 殖民地", type: "special", icon: "🚢", x: 650, y: 450, desc: "漂在土地上的巨船，第二刑务所与祝圣记录所在。", cost: "船内通道", fanAngle: 90, subs: ["第二刑务所", "祝圣记录", "方舟甲板"] },
+      { id: "帕尔革多", name: "帕尔革多", nation: "贝蕾特里亚 · 殖民地", type: "city", icon: "🌲", x: 280, y: 450, desc: "魔物之国，隐宿与劳维茵雾林都在这一带。", cost: "荒野 3日", fanAngle: 90, subs: ["隐之里", "劳维茵", "魔物之国"] },
+      { id: "阿尔菜特", name: "阿尔菜特", nation: "贝蕾特里亚 · 殖民地", type: "city", icon: "⛪", x: 780, y: 450, desc: "希斯玛岬角的王国，虫之女王与琉宗教会。", cost: "海路 2日", fanAngle: 90, subs: ["希斯玛岬角", "夏恩教会", "诊疗所"] },
+
+      { id: "王都特雷普斯", name: "王都特雷普斯", nation: "贝尔蒂王国", type: "capital", icon: "👑", x: 2820, y: 420, desc: "贝尔蒂的王都，王室与骑士团所在。", cost: "马车 2日", fanAngle: 90, subs: ["王宫", "骑士团驻地", "大圣堂", "贵族街区"] },
+      { id: "北方祭殿", name: "北方祭殿", nation: "贝尔蒂王国", type: "special", icon: "🕯️", x: 3000, y: 260, desc: "公主十八岁必须前往祈祷的祭殿，如今只剩无名的慰灵碑。", cost: "马车 3日", fanAngle: 0, subs: ["慰灵碑", "选定之龙", "祭殿遗址"] },
+      { id: "虚幻的黑城", name: "虚幻的黑城", nation: "贝尔蒂王国", type: "special", icon: "🖤", x: 3400, y: 300, desc: "太古邪魔的化身，会蛊惑人心，只能封印不能消灭。", cost: "降王阵 半日", fanAngle: 0, subs: ["降王阵", "封印核心", "魔剑骑士"] },
+      { id: "施万庭", name: "施万庭", nation: "贝尔蒂王国", type: "city", icon: "❄️", x: 2700, y: 300, desc: "凛冬之城，魔导侯家以自身召唤了选定之龙。", cost: "马车 2日", fanAngle: 180, subs: ["魔导侯家", "凛冬之城"] },
+      { id: "阿达曼银岭", name: "阿达曼银岭", nation: "贝尔蒂王国", type: "special", icon: "🏔️", x: 2680, y: 700, desc: "雪之精灵优依诞生的山脊，她的灵地。", cost: "登山 2日", fanAngle: 180, subs: ["雪之精灵", "优依的灵地"] },
+      { id: "翡翠山峰", name: "翡翠山峰", nation: "贝尔蒂王国", type: "special", icon: "🌪️", x: 3060, y: 700, desc: "风灵圣地，自由的风是友亦是敌。", cost: "登山 2日", fanAngle: 90, subs: ["风灵秘境", "半山腰"] },
+      { id: "珊瑚溶洞", name: "珊瑚溶洞", nation: "贝尔蒂王国", type: "special", icon: "🌊", x: 3280, y: 640, desc: "水灵秘境，王室戒指里米娜的灵地。", cost: "水路 1日", fanAngle: 90, subs: ["水灵秘境", "珊瑚厅"] },
+      { id: "黄金沙漠", name: "黄金沙漠", nation: "贝尔蒂王国", type: "special", icon: "🏜️", x: 3440, y: 700, desc: "大地之灵琪琪露的灵地，黄沙下埋着降王阵。", cost: "商队 3日", fanAngle: 0, subs: ["地灵秘境", "沙下遗迹"] },
+      { id: "熔岩矿坑", name: "熔岩矿坑", nation: "贝尔蒂王国", type: "special", icon: "🌋", x: 3600, y: 640, desc: "火灵秘境，尤克夏沉睡的熔岩矿坑。", cost: "矿道 1日", fanAngle: 0, subs: ["火灵秘境", "矿坑深处"] },
+
+      { id: "伊莉娅丝村", name: "伊莉娅丝村", nation: "勇战 · 西南三区", type: "capital", icon: "🗡️", x: 480, y: 2390, desc: "鲁卡的故乡，勇者洗礼的神殿所在。", cost: "徒步 1日", fanAngle: 90, subs: ["神殿", "后山", "旅馆", "村口"] },
+      { id: "圣·伊莉娅", name: "圣·伊莉娅", nation: "勇战 · 西南三区", type: "city", icon: "⛪", x: 780, y: 2230, desc: "人类侧的宗教与政治顶点，教皇厅所在。", cost: "马车 2日", fanAngle: 0, subs: ["教皇厅", "大圣堂", "圣都"] },
+      { id: "魔王城", name: "魔王城", nation: "勇战 · 西南三区", type: "capital", icon: "🏰", x: 1080, y: 2310, desc: "第十六代魔王艾丽丝菲兹的居城，四天王与研究所都在此。", cost: "魔界门 1日", fanAngle: 90, subs: ["王座厅", "研究所", "口袋魔王城"] },
+      { id: "天界", name: "天界", nation: "勇战 · 西南三区", type: "special", icon: "☁️", x: 1300, y: 2210, desc: "伊莉娅丝的天界，天使军团与炽天使的居所。", cost: "天梯 半日", fanAngle: 0, subs: ["雪之天堂", "炽天使"] },
+      { id: "塔尔塔洛斯", name: "塔尔塔洛斯", nation: "勇战 · 西南三区", type: "special", icon: "🌀", x: 1200, y: 2610, desc: "大异变隆起的雪之大陆，城镇雷米娜消失后留下的深渊。", cost: "异界门 半日", fanAngle: 90, subs: ["雪之大陆", "异界门", "混沌"] },
+      { id: "魅魔村", name: "魅魔村", nation: "勇战 · 西南三区", type: "city", icon: "💗", x: 620, y: 2730, desc: "淫魔领地，四天王阿露艾露玛的地盘。", cost: "荒野 2日", fanAngle: 180, subs: ["淫魔领地", "夜之国入口"] },
+      { id: "吸血鬼魔城", name: "吸血鬼魔城", nation: "勇战 · 西南三区", type: "special", icon: "🦇", x: 900, y: 2790, desc: "圣特拉东北孤岛上的吸血鬼女王之城。", cost: "渡船 2日", fanAngle: 90, subs: ["女王厅", "秘宝库"] },
+      { id: "妖精之岛", name: "妖精之岛", nation: "勇战 · 西南三区", type: "special", icon: "🧚", x: 1300, y: 2760, desc: "妖精栖息的孤岛，风与试炼都在这里。", cost: "海路 2日", fanAngle: 0, subs: ["妖精之森", "试炼场"] },
+
+      { id: "无名之城", name: "无名之城", nation: "无名之城 · 地下圣教会", type: "capital", icon: "🥀", x: 2700, y: 2350, desc: "地上教堂与地下牢狱叠在一起的城市，魔堕者从井里爬上来。", cost: "徒步 1日", fanAngle: 90, subs: ["桥街区", "贫民街", "市集", "祭坛"] },
+      { id: "地下圣教会", name: "地下圣教会", nation: "无名之城 · 地下圣教会", type: "special", icon: "⛪", x: 2960, y: 2230, desc: "教会的暗面：祷告与救济之下是实验室与牧场。", cost: "祭坛下行 半日", fanAngle: 0, subs: ["大厅", "断罪", "礼拜堂"] },
+      { id: "终牢狱", name: "终牢狱", nation: "无名之城 · 地下圣教会", type: "special", icon: "⛓️", x: 3120, y: 2510, desc: "地下最深处的牢狱，再往下是研究设施与牧场。", cost: "竖井 半日", fanAngle: 90, subs: ["牢狱", "牧场", "研究设施"] },
+      { id: "不夜街拉格多姆", name: "不夜街拉格多姆", nation: "无名之城 · 地下圣教会", type: "city", icon: "🎭", x: 3300, y: 2250, desc: "黑市与拍卖行聚集的不夜街，名簿上的流程在这里走完。", cost: "马车 1日", fanAngle: 0, subs: ["拍卖场", "黑市", "调教室"] },
+      { id: "魔女废村", name: "魔女废村", nation: "无名之城 · 地下圣教会", type: "special", icon: "🔥", x: 2540, y: 2230, desc: "阿拉蒂娅的村子，那一夜的火还没灭。", cost: "徒步 1日", fanAngle: 180, subs: ["焦土", "祭坛残迹"] },
+      { id: "沉落溪谷", name: "沉落溪谷", nation: "无名之城 · 地下圣教会", type: "city", icon: "🌫️", x: 3000, y: 2730, desc: "一层压一层的旧街区与遗迹，魔女传说沉在这里。", cost: "溪谷 2日", fanAngle: 90, subs: ["旧街区", "遗迹", "地窖"] },
+      { id: "罗德里亚小教区", name: "罗德里亚小教区", nation: "无名之城 · 地下圣教会", type: "city", icon: "🕯️", x: 2620, y: 2730, desc: "地下圣教会之上的小教区，白色审判官曾在此整队。", cost: "徒步 1日", fanAngle: 180, subs: ["小教堂", "教区广场"] },
+
       { id: "王都", name: "王都", nation: "埃斯特拉德尔帝国", type: "capital", icon: "🏛️", x: 1450, y: 1100, desc: "帝国全境中心，皇室与元老院所在。", cost: "中心原点", fanAngle: 90, subs: ["学院", "瓦莱里安公爵邸", "贵族街区", "商店街", "花街"] },
       { id: "塞拉丁", name: "塞拉丁", nation: "埃斯特拉德尔帝国", type: "city", icon: "🏚️", x: 1120, y: 1080, desc: "瓦莱里安家荒废领地，形同贫民窟。", cost: "马车 1~2日", fanAngle: 180, subs: ["领主馆", "贫民窟巷", "魔力矿脉"] },
       { id: "卢娜湖镇", name: "卢娜湖镇", nation: "埃斯特拉德尔帝国", type: "city", icon: "🐺", x: 1450, y: 820, desc: "北方兽人居留地，镇守北方魔物。", cost: "马车 3~4日", fanAngle: 0, subs: ["镇广场", "兽人村", "温泉", "湖畔"] },
@@ -1494,7 +1757,9 @@
     sideOpen: { 克蕾雅支线: false, 伊莉丝支线: false },
     workHint: '',
     linkMode: true,
-    linkChars: { '响木天音': true, '托莉娜': true, '芙洛蒂': false, '艾妮希雅': false, '夏洛特': false, '一之濑雫': false, '王逝-南境篇': true, '医术师-温伯格篇': true, '祈愿诗篇-安纳托尔岛篇': true, 'BS2-残片篇': true, '摇篮-格拉提亚篇': true },
+    linkChars: { '响木天音': true, '托莉娜': true, '芙洛蒂': false, '艾妮希雅': false, '夏洛特': false, '一之濑雫': false, '王逝-南境篇': false, '医术师-温伯格篇': false, '祈愿诗篇-安纳托尔岛篇': false, 'BS2-残片篇': false, '摇篮-格拉提亚篇': false },
+    monsterGirl: { on: false, mode: 'region' },
+    monsterPick: '',
     currentLinkChar: '响木天音'
   };
 
@@ -1522,13 +1787,30 @@
         Object.assign(state.works, saved.works);
       }
       if (typeof saved.linkMode === 'boolean') state.linkMode = saved.linkMode;
+      if (typeof saved.monsterPick === 'string') state.monsterPick = saved.monsterPick;
+      if (saved.monsterGirl && typeof saved.monsterGirl === 'object') {
+        state.monsterGirl = { on: !!saved.monsterGirl.on, mode: saved.monsterGirl.mode === 'world' ? 'world' : 'region' };
+      }
       if (saved.mode) state.mode = saved.mode;
       /* v3：默认模式必须是「自由模式」。老存档里存的学院模式等一律复位，
          否则新卡导入后会莫名其妙直接进学院模式 */
-      if (saved.__v !== 3) {
+      if (!(saved.__v >= 3)) {
         state.mode = '自由模式';
         state.stories = state.stories || {};
         Object.keys(state.stories).forEach(function (k) { state.stories[k] = false; });
+        state.__needPersist = true;
+      }
+      /* 扩展篇章默认全关：用独立标记只迁移一次（__v 已经升过级的存档也能补救） */
+      if (!saved.linkOffMigrated) {
+        ['王逝-南境篇', '医术师-温伯格篇', '祈愿诗篇-安纳托尔岛篇', 'BS2-残片篇', '摇篮-格拉提亚篇', '勇战-圣特拉篇', '救主记-贝尔蒂篇', 'SEQUEL-贝蕾特里亚篇', '魔复夜-无名之城篇']
+          .forEach(function (k) { state.linkChars[k] = false; });
+        state.linkOffMigrated = true;
+        state.__needPersist = true;
+      }
+      /* 魔物娘默认关闭，同样只迁移一次 */
+      if (!saved.monsterOffMigrated) {
+        state.monsterGirl = { on: false, mode: 'region' };
+        state.monsterOffMigrated = true;
         state.__needPersist = true;
       }
       if (Array.isArray(saved.futaChars)) state.futaChars = saved.futaChars;
@@ -1564,11 +1846,15 @@
         knowledge: state.knowledge,
         gold: state.gold,
         customCompanions: state.customCompanions,
-        __v: 3,
+        __v: 4,
         customOpening: state.customOpening,
         customOpenings: state.customOpenings,
         worldCrisis: state.worldCrisis,
-        wcPresetKey: state.wcPresetKey
+        wcPresetKey: state.wcPresetKey,
+        monsterGirl: state.monsterGirl,
+        linkOffMigrated: state.linkOffMigrated,
+        monsterPick: state.monsterPick,
+        monsterOffMigrated: state.monsterOffMigrated
       };
       localStorage.setItem(KRS_STORAGE_KEY, JSON.stringify(toSave));
     } catch (e) {
@@ -2678,6 +2964,28 @@
       padding-top: 6px;
       border-top: 1px dashed rgba(255,255,255,0.12);
     }
+    .link-master-row { display: flex; gap: 10px; align-items: stretch; }
+    .link-master-row .link-top-btn { flex: 1 1 0; min-width: 0; }
+    .monster-sub-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .monster-sub-btn {
+      flex: 1 1 180px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px dashed #c9a54e;
+      background: rgba(20, 16, 30, 0.8);
+      color: #c9a54e;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .monster-sub-btn.on {
+      border-style: solid;
+      color: #fff;
+      background: rgba(201, 165, 78, 0.22);
+      box-shadow: 0 0 12px rgba(201, 165, 78, 0.45);
+    }
+    .monster-hint { margin-top: 6px; font-size: 11px; color: #8f87a0; }
     .link-exp-char-avatar {
       width: 34px;
       height: 34px;
@@ -3634,6 +3942,28 @@
       border-bottom: 1px solid var(--krs-line);
       padding-bottom: 10px; margin-bottom: 16px;
     }
+    .monster-pick-shell { padding: 6px 2px 12px; }
+    .monster-pick-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+    .monster-pick-title { color: var(--krs-gold); font-size: 14px; letter-spacing: 0.12em; }
+    .monster-pick-hint { color: var(--krs-dim); font-size: 11px; flex: 1; min-width: 180px; }
+    .monster-pick-clear {
+      background: transparent; border: 1px dashed var(--krs-line); color: var(--krs-dim);
+      border-radius: 5px; padding: 5px 10px; cursor: pointer; font-family: inherit; font-size: 12px;
+    }
+    .monster-pick-clear:hover { color: var(--krs-gold); border-color: var(--krs-gold); }
+    .monster-pick-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+      gap: 8px; max-height: 420px; overflow: auto; padding-right: 4px;
+    }
+    .monster-pick-card {
+      background: rgba(16, 13, 24, 0.7); border: 1px solid var(--krs-line); border-radius: 8px;
+      padding: 6px 4px 4px; cursor: pointer; font-family: inherit; color: var(--krs-text);
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .monster-pick-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; display: block; }
+    .monster-pick-card span { font-size: 11px; color: var(--krs-dim); line-height: 1.2; text-align: center; }
+    .monster-pick-card.selected { border-color: var(--krs-gold); box-shadow: 0 0 12px rgba(201, 165, 78, 0.5); }
+    .monster-pick-card.selected span { color: var(--krs-gold); }
     .open-tab {
       background: rgba(255,255,255,0.05);
       border: 1px solid var(--krs-line);
@@ -4398,6 +4728,22 @@
           return Object.assign({}, entry, { enabled: wcWant });
         }
 
+        // 【魔物娘】总开关
+        if (label.indexOf('[魔物娘') >= 0) {
+          const mg = state.monsterGirl || { on: false, mode: 'region' };
+          const isRegion = label.indexOf('[魔物娘地区模式]') >= 0;
+          const isWorld = label.indexOf('[魔物娘世界模式]') >= 0;
+          let wantMG = !!mg.on;
+          if (wantMG && (isRegion || isWorld)) {
+            wantMG = isRegion ? (mg.mode !== 'world') : (mg.mode === 'world');
+          }
+          if (!!entry.enabled !== wantMG) {
+            changed += 1;
+            return Object.assign({}, entry, { enabled: wantMG });
+          }
+          return entry;
+        }
+
         // 【学院模式 · 排他白名单】学院模式下一律先关掉白名单以外的条目，再做后续分支判定
         if (state.mode === '学院模式' && !krsAcademyKeep(label)) {
           if (entry.enabled) {
@@ -4821,7 +5167,15 @@
             </div>
 
             <div class="link-section">
-              <button class="link-top-btn" type="button" id="link-master-btn">联 动 角 色：已开启</button>
+              <div class="link-master-row">
+                <button class="link-top-btn" type="button" id="link-master-btn">联 动 角 色：已开启</button>
+                <button class="link-top-btn monster-master" type="button" id="monster-master-btn">魔 物 娘：未开启</button>
+              </div>
+              <div class="monster-sub-row" id="monster-sub-box" style="display:none;">
+                <button class="monster-sub-btn" type="button" data-monster-mode="region">勇战地区魔物娘</button>
+                <button class="monster-sub-btn" type="button" data-monster-mode="world">世界都是魔物娘</button>
+              </div>
+              <div class="monster-hint" id="monster-hint">开启后启用世界书里全部 [魔物娘] 条目；两种模式互斥。</div>
               
               <div class="section-label">✦ 异 界 旅 人 · 单 人 联 动</div>
               <div class="link-avatars" id="link-avatars-box"></div>
@@ -5150,7 +5504,18 @@
               <button type="button" class="open-tab" data-open-pane="destiny">✦ 单人命运主线</button>
               <button type="button" class="open-tab" data-open-pane="chapter">✦ 章 节</button>
               <button type="button" class="open-tab" data-open-pane="badend">✦ 战 败 支 线</button>
+              <button type="button" class="open-tab" data-open-pane="monster">✦ 魔 物 娘 开 局</button>
             </nav>
+            <div class="open-pane" data-pane="monster">
+              <div class="monster-pick-shell">
+                <div class="monster-pick-head">
+                  <span class="monster-pick-title">魔物娘开局</span>
+                  <span class="monster-pick-hint">点一位魔物娘作为本局的随行对象，再点一次取消；同一时间只能选一个。</span>
+                  <button type="button" class="monster-pick-clear" id="monster-pick-clear">清除选择</button>
+                </div>
+                <div class="monster-pick-grid" id="monster-pick-grid"></div>
+              </div>
+            </div>
             <div class="open-pane active" data-pane="free">
                         <div class="chap-panel" id="chap-panel-free">
                 <button class="chap-panel-head" type="button" id="chap-head-free">
@@ -6369,6 +6734,38 @@
       panel.style.display = 'block';
     }
 
+    function renderMonsterPick() {
+      const box = shadow.getElementById('monster-pick-grid');
+      if (!box) return;
+      if (box.getAttribute('data-bound') !== '1') {
+        box.setAttribute('data-bound', '1');
+        box.innerHTML = MONSTER_LIST.map(function (m) {
+          return '<button type="button" class="monster-pick-card" data-monster="' + m.name + '">'
+            + '<img src="' + m.url + '" alt="' + m.name + '" loading="lazy">'
+            + '<span>' + m.name + '</span></button>';
+        }).join('');
+        box.addEventListener('click', function (ev) {
+          const btn = ev.target && ev.target.closest ? ev.target.closest('.monster-pick-card') : null;
+          if (!btn) return;
+          const name = btn.getAttribute('data-monster');
+          state.monsterPick = (state.monsterPick === name) ? '' : name;
+          renderMonsterPick();
+          persistCurrentState();
+          refreshOpeningText(true);
+        });
+        const clear = shadow.getElementById('monster-pick-clear');
+        if (clear) clear.addEventListener('click', function () {
+          state.monsterPick = '';
+          renderMonsterPick();
+          persistCurrentState();
+          refreshOpeningText(true);
+        });
+      }
+      box.querySelectorAll('.monster-pick-card').forEach(function (b) {
+        b.classList.toggle('selected', b.getAttribute('data-monster') === state.monsterPick);
+      });
+    }
+
     function bindOpenTabs() {
       const bar = shadow.getElementById('open-tabs-bar');
       if (!bar || bar.getAttribute('data-bound') === '1') return;
@@ -7030,7 +7427,7 @@
       renderBirthMap();
       bindBirthMap();
       bindBsGarden();
-      syncPage4View(); syncChapterPanels(); syncSidePanels(); renderPureRoute(); renderLinkPage(); renderLinkStoryLine(); renderDestinyMainlines(); syncProtagonistView();
+      syncPage4View(); syncChapterPanels(); syncSidePanels(); renderPureRoute(); renderLinkPage(); renderLinkStoryLine(); renderDestinyMainlines(); syncProtagonistView(); renderMonsterPick();
 
       shadow.getElementById('prev-btn').disabled = (target <= 0);
       shadow.getElementById('page-indicator').textContent = (target + 1) + ' / ' + (state.maxPage + 1);
@@ -7336,6 +7733,9 @@
       const futa = buildFutaText();
       if (futa) parts.push(futa);
 
+      if (state.monsterPick) {
+        parts.push('【魔物娘随行】本局「' + state.monsterPick + '」是你的随行对象。');
+      }
       return parts.join('\n\n');
     }
 
@@ -7487,6 +7887,43 @@
 
     
 
+    function renderMonsterBlock() {
+      const master = shadow.getElementById('monster-master-btn');
+      const box = shadow.getElementById('monster-sub-box');
+      const hint = shadow.getElementById('monster-hint');
+      if (!master || !box) return;
+      const mg = state.monsterGirl || (state.monsterGirl = { on: false, mode: 'region' });
+      master.textContent = '魔 物 娘：' + (mg.on ? '已开启' : '未开启');
+      master.className = 'link-top-btn monster-master' + (mg.on ? ' on' : '');
+      box.style.display = mg.on ? 'flex' : 'none';
+      box.querySelectorAll('[data-monster-mode]').forEach(function (btn) {
+        btn.classList.toggle('on', mg.mode === btn.dataset.monsterMode);
+      });
+      if (hint) {
+        hint.textContent = !mg.on
+          ? '开启后启用世界书里全部 [魔物娘] 条目；两种模式互斥。'
+          : (mg.mode === 'world'
+            ? '当前：世界都是魔物娘（全世界按魔物娘规则运转）。'
+            : '当前：勇战地区魔物娘（仅勇战一带按魔物娘规则运转）。');
+      }
+      master.onclick = function () {
+        mg.on = !mg.on;
+        if (mg.on && !mg.mode) mg.mode = 'region';
+        persistCurrentState();
+        renderMonsterBlock();
+        syncWorks();
+      };
+      box.querySelectorAll('[data-monster-mode]').forEach(function (btn) {
+        btn.onclick = function () {
+          if (!mg.on) return;
+          mg.mode = btn.dataset.monsterMode;
+          persistCurrentState();
+          renderMonsterBlock();
+          syncWorks();
+        };
+      });
+    }
+
     /* 联动角色页渲染与绑定（上下两级架构） */
     function renderLinkPage() {
       const masterBtn = shadow.getElementById('link-master-btn');
@@ -7498,6 +7935,7 @@
 
       masterBtn.textContent = state.linkMode ? '联 动 角 色：已开启' : '联 动 角 色：已关闭';
       masterBtn.className = 'link-top-btn' + (state.linkMode ? ' on' : '');
+      renderMonsterBlock();
 
       if (state.linkMode) {
         avatarBox.style.display = 'flex';
@@ -7510,7 +7948,7 @@
 
         // 角色名单分区定义
         const SINGLE_CHARS = ['响木天音', '托莉娜', '芙洛蒂', '艾妮希雅', '夏洛特', '一之濑雫'];
-        const EXPANSIONS = ['祈愿诗篇-安纳托尔岛篇', '医术师-温伯格篇', '王逝-南境篇', 'BS2-残片篇', '摇篮-格拉提亚篇'];
+        const EXPANSIONS = ['勇战-圣特拉篇', '救主记-贝尔蒂篇', 'SEQUEL-贝蕾特里亚篇', '魔复夜-无名之城篇', 'BS2-残片篇', '祈愿诗篇-安纳托尔岛篇', '医术师-温伯格篇', '摇篮-格拉提亚篇', '王逝-南境篇'];
 
         // 1. 渲染上部：单人联动（保持精致圆形）
         avatarBox.innerHTML = '';
@@ -7529,7 +7967,14 @@
           `;
           btn.onclick = () => {
             state.currentLinkChar = charName;
+            state.linkChars[charName] = !state.linkChars[charName];
+            persistCurrentState();
             renderLinkPage();
+            renderLinkStoryLine();
+            syncChapterPanels();
+            renderDestinyMainlines();
+            refreshOpeningText(true);
+            syncWorks();
           };
           avatarBox.appendChild(btn);
         });
@@ -7584,7 +8029,21 @@
                 }
               }
               state.currentLinkChar = charName;
+              var nextOn = !state.linkChars[charName];
+              state.linkChars[charName] = nextOn;
+              /* 打开「勇战」时顺手点亮魔物娘；两者本质独立，关掉勇战不会关魔物娘 */
+              if (nextOn && charName === '勇战-圣特拉篇') {
+                var mgLink = state.monsterGirl || (state.monsterGirl = { on: false, mode: 'region' });
+                mgLink.on = true;
+                if (!mgLink.mode) mgLink.mode = 'region';
+              }
+              persistCurrentState();
               renderLinkPage();
+              renderLinkStoryLine();
+              syncChapterPanels();
+              renderDestinyMainlines();
+              refreshOpeningText(true);
+              syncWorks();
             };
             expBox.appendChild(card);
           });

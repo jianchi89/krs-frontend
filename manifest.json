@@ -1,8 +1,8 @@
 {
-  "schema": 1,
-  "abi": 1,
-  "version": "7.0.0",
-  "script": "https://raw.githubusercontent.com/jianchi89/krs-frontend/main/fate-book.js",
-  "sha256": "e0c5bb5ad73beaf69d8ae78b67e0a2e5e9c76146965606214a71c4bc30f87579",
-  "updatedAt": "2026-10-28T04:11:52Z"
+    "schema":  1,
+    "abi":  1,
+    "version":  "7.0.0",
+    "script":  "https://raw.githubusercontent.com/jianchi89/krs-frontend/main/fate-book.js",
+    "sha256":  "077170f375268997d6118e15cb5dd106c57a84f0bc7b5f0ded2aa09809cac0da",
+    "updatedAt":  "2026-10-28T15:33:21Z"
 }
