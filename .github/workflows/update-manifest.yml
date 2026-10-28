@@ -1,0 +1,54 @@
+# 放到仓库的 .github/workflows/update-manifest.yml
+# 作用：只要 push 了 fate-book.js，自动重算 sha256 并更新 manifest.json
+# 前提：仓库 Settings → Actions → General → Workflow permissions 选 “Read and write permissions”
+name: update-opening-manifest
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'fate-book.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Recompute sha256 and rewrite manifest.json
+        run: |
+          SHA=$(sha256sum fate-book.js | cut -d' ' -f1)
+          echo "new sha256: $SHA"
+          SHA="$SHA" python3 - <<'PY'
+          import json, os, datetime
+
+          path = 'manifest.json'
+          with open(path, encoding='utf-8') as f:
+              m = json.load(f)
+
+          m['sha256'] = os.environ['SHA']
+          m['updatedAt'] = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+
+          with open(path, 'w', encoding='utf-8') as f:
+              json.dump(m, f, ensure_ascii=False, indent=2)
+              f.write('\n')
+          print('manifest updated:', m['version'], m['sha256'])
+          PY
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- manifest.json; then
+            echo "manifest unchanged"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manifest.json
+          git commit -m "chore: sync manifest sha256"
+          git push
